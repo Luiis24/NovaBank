@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Demo de widgets autónomos · NovaBank</title>
+  <style>
+    /* Estilos de la página anfitriona: NO son de NovaBank. Los widgets traen los suyos, aislados. */
+    body {
+      font-family: Georgia, serif;
+      margin: 0;
+      background: #f4f1ea;
+      color: #222
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px
+    }
+
+    h1 {
+      margin-top: 0
+    }
+
+    h2 {
+      margin-top: 36px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 6px
+    }
+
+    pre {
+      background: #222;
+      color: #e8e8e8;
+      padding: 14px;
+      border-radius: 8px;
+      overflow: auto;
+      font-size: 13px
+    }
+
+    code {
+      font-family: ui-monospace, monospace
+    }
+
+    .note {
+      background: #fff8dc;
+      border-left: 4px solid #e0b400;
+      padding: 10px 14px
+    }
+
+    a {
+      color: #0a58ca
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <h1>Una página cualquiera de un "portal"</h1>
+    <p>Esta página no usa el shell de NovaBank, ni React propio, ni Module Federation. Solo carga dos archivos
+      <code>.js</code>
+      y declara <code>&lt;div&gt;</code> con atributos <code>data-*</code>. Cada widget se monta solo y se configura con
+      esos atributos.
+      <a href="./">← Volver al portal</a>
+    </p>
+
+    <h2>1. Widget de crédito (configuración por defecto, en COP)</h2>
+    <div data-nb-widget="credit"></div>
+
+    <h2>2. Otra instancia del mismo widget, configurada distinto (USD)</h2>
+    <p class="note">Mismo archivo <code>.js</code>, otra configuración: moneda USD, monto inicial 5.000, tasa 12 %.</p>
+    <div data-nb-widget="credit" data-titulo="Simulador en dólares" data-moneda="USD" data-locale="en-US"
+      data-monto="5000" data-monto-min="1000" data-monto-max="50000" data-monto-paso="500" data-tea="12"
+      data-meses="24"></div>
+
+    <h2>3. Widget de seguros (preconfigurado: auto, plan Plus)</h2>
+    <div data-nb-widget="insurance" data-tipo="auto" data-plan="plus" data-valor="80000000"></div>
+
+    <h2>4. Montaje manual desde JavaScript</h2>
+    <p>Además del auto-montaje, hay una API: <code>NovaBank.credit.mount(elemento, props)</code>.</p>
+    <button id="btn">Montar un widget de crédito aquí abajo</button>
+    <div id="manual" style="margin-top:12px"></div>
+
+    <h2>Cómo se usa en cualquier página</h2>
+    <pre>&lt;div data-nb-widget="credit" data-tea="18" data-moneda="COP"&gt;&lt;/div&gt;
+&lt;script src="widgets/credit-widget.js"&gt;&lt;/script&gt;</pre>
+    <p>En una plataforma con plantillas (como Liquid en Modyo) los valores de los <code>data-*</code> podrían ser
+      generados por la plantilla en el servidor. Aquí están escritos a mano; la idea es la misma: la página decide, el
+      widget obedece.</p>
+  </div>
+
+  <script src="./widgets/credit-widget.js"></script>
+  <script src="./widgets/insurance-widget.js"></script>
+  <script>
+    document.getElementById('btn').addEventListener('click', function () {
+      NovaBank.credit.mount(document.getElementById('manual'), { titulo: 'Montado con JavaScript', tea: 15, meses: 12 });
+    });
+  </script>
+</body>
+
+</html>

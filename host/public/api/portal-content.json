@@ -1,0 +1,41 @@
+{
+  "banners": [
+    {
+      "t": "Crédito de libre inversión",
+      "d": "Simula tu cuota en segundos, sin papeleo.",
+      "tab": "credit"
+    },
+    {
+      "t": "Protege lo que más quieres",
+      "d": "Cotiza tu seguro de vida o auto 100% en línea.",
+      "tab": "insurance"
+    }
+  ],
+  "faq": [
+    [
+      "¿Esto es un banco real?",
+      "No. Es un proyecto de portafolio que demuestra una arquitectura de micro frontends."
+    ],
+    [
+      "¿Cómo se construyó?",
+      "Un shell React que carga widgets independientes en runtime con Module Federation; además, cada widget puede usarse solo en cualquier página."
+    ],
+    [
+      "¿De dónde sale este contenido?",
+      "De un archivo JSON servido por HTTP y consumido con fetch, imitando un servicio de contenido tipo CMS."
+    ]
+  ],
+  "widgets": {
+    "credit": {
+      "tea": 22,
+      "moneda": "COP",
+      "locale": "es-CO"
+    },
+    "insurance": {
+      "tipo": "vida",
+      "plan": "basico",
+      "moneda": "COP",
+      "locale": "es-CO"
+    }
+  }
+}

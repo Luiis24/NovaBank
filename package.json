@@ -1,0 +1,2 @@
+{ "name": "novabank-portal", "private": true,
+  "scripts": { "build": "bash build-all.sh", "start": "npm run build && cd host && npx vite preview --port 5000", "preview": "cd host && npx vite preview --port 5000" } }
