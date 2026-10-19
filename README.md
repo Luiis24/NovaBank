@@ -2,7 +2,7 @@
 
 > Portal bancario **ficticio** de portafolio. Un *shell* (host) carga en tiempo de ejecución dos **micro frontends** independientes (simulador de crédito y cotizador de seguros) con **Module Federation**. Además, cada uno se compila **también como widget autónomo**: un único `.js` que se pone en cualquier página HTML y se configura con atributos `data-*`, imitando el modelo de *widgets* de plataformas de experiencia digital como **Modyo**.
 
-**Demo:** `[LINK DE LA DEMO]` · **Widgets en una página común:** `[LINK DE LA DEMO]/widget-demo.html` · **Autor:** Luis Morales
+**Demo:** `https://simulationnovabank.netlify.app/` · **Widgets en una página común:** `https://simulationnovabank.netlify.app/widget-demo.html` · **Autor:** Luis Morales
 
 ---
 
